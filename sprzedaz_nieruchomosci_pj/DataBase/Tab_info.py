@@ -11,33 +11,38 @@ class Informacje_o_tabelach:
         self.tab1 = ttk.Frame(self.notebook)
         self.notebook.add(self.tab1, text="Informacje o tabelach")
         self.notebook.pack()
+        self.tab1_subframe = None
+        self.tab1_subnotebook = None
 
+    def menu(self):
         # Menu:
-        self.tab1_subframe = ttk.Frame(self.tab1)
-        self.tab1_subnotebook = ttk.Notebook(self.tab1_subframe)
-        self.tab1_subtab1 = ttk.Frame(self.tab1_subnotebook)
-        self.tab1_subtab2 = ttk.Frame(self.tab1_subnotebook)
-        self.tab1_subtab3 = ttk.Frame(self.tab1_subnotebook)
-        self.tab1_subtab4 = ttk.Frame(self.tab1_subnotebook)
-        self.tab1_subtab5 = ttk.Frame(self.tab1_subnotebook)
-        self.tab1_subtab6 = ttk.Frame(self.tab1_subnotebook)
-        self.tab1_subtab7 = ttk.Frame(self.tab1_subnotebook)
+        if self.tab1_subframe is None and self.tab1_subnotebook is None:
+            self.tab1_subframe = ttk.Frame(self.tab1)
+            self.tab1_subnotebook = ttk.Notebook(self.tab1_subframe)
+            self.tab1_subtab1 = ttk.Frame(self.tab1_subnotebook)
+            self.tab1_subtab2 = ttk.Frame(self.tab1_subnotebook)
+            self.tab1_subtab3 = ttk.Frame(self.tab1_subnotebook)
+            self.tab1_subtab4 = ttk.Frame(self.tab1_subnotebook)
+            self.tab1_subtab5 = ttk.Frame(self.tab1_subnotebook)
+            self.tab1_subtab6 = ttk.Frame(self.tab1_subnotebook)
+            self.tab1_subtab7 = ttk.Frame(self.tab1_subnotebook)
 
-        self.tab1_subnotebook.add(self.tab1_subtab1, text="Klienci")
-        self.tab1_subnotebook.add(self.tab1_subtab2, text="Nieruchomosci")
-        self.tab1_subnotebook.add(self.tab1_subtab3, text="Oferty")
-        self.tab1_subnotebook.add(self.tab1_subtab4, text="Posrednicy")
-        self.tab1_subnotebook.add(self.tab1_subtab5, text="Transakcje")
-        self.tab1_subnotebook.add(self.tab1_subtab6, text="Typy_nieruchomosci")
-        self.tab1_subnotebook.add(self.tab1_subtab7, text="Umowy")
-        self.tab1_subnotebook.pack()
+            self.tab1_subnotebook.add(self.tab1_subtab1, text="Klienci")
+            self.tab1_subnotebook.add(self.tab1_subtab2, text="Nieruchomosci")
+            self.tab1_subnotebook.add(self.tab1_subtab3, text="Oferty")
+            self.tab1_subnotebook.add(self.tab1_subtab4, text="Posrednicy")
+            self.tab1_subnotebook.add(self.tab1_subtab5, text="Transakcje")
+            self.tab1_subnotebook.add(self.tab1_subtab6, text="Typy_nieruchomosci")
+            self.tab1_subnotebook.add(self.tab1_subtab7, text="Umowy")
+            self.tab1_subnotebook.pack()
 
-        # Submenu:
-        self.tab1_submenu_var = tk.StringVar()
-        self.tab1_submenu = ttk.OptionMenu(self.tab1, self.tab1_submenu_var, "Tabele", "Klienci",
+            # Submenu:
+
+            self.tab1_submenu_var = tk.StringVar()
+            self.tab1_submenu = ttk.OptionMenu(self.tab1, self.tab1_submenu_var, "Tabele", "Klienci",
                                            "Nieruchomosci", "Oferty", "Posrednicy", "Transakcje", "Typy nieruchomosci",
                                            "Umowy", command=self.Show_subtab)
-        self.tab1_submenu.pack(side=LEFT,padx=10)
+            self.tab1_submenu.pack(side=LEFT,padx=10)
     def Show_Klienci(self):
         self.table_frame = ttk.Frame(self.root)
         self.table_frame.pack(expand=True, fill=tk.BOTH)
@@ -101,19 +106,17 @@ class Informacje_o_tabelach:
         # Tabela::Nieruchomosci
         self.tree = ttk.Treeview(self.tab1)
         self.tree.pack(expand=True, fill=tk.BOTH)
-        self.tree["columns"] = ("1", "2", "3", "4", "5")
+        self.tree["columns"] = ("1", "2", "3", "4")
         self.tree.column("#0", width=0, stretch=False)
         self.tree.column("1", width=100, minwidth=100, stretch=False,anchor=tk.CENTER)
         self.tree.column("2", width=100, minwidth=100, stretch=False,anchor=tk.CENTER)
         self.tree.column("3", width=100, minwidth=100, stretch=False,anchor=tk.CENTER)
         self.tree.column("4", width=100, minwidth=100, stretch=False,anchor=tk.CENTER)
-        self.tree.column("5", width=100, minwidth=100, stretch=False,anchor=tk.CENTER)
         self.tree.heading("#0", text="", anchor=tk.CENTER)
         self.tree.heading("1", text="ID Oferty", anchor=tk.CENTER)
         self.tree.heading("2", text="ID Nieruchomosci", anchor=tk.CENTER)
         self.tree.heading("3", text="ID Posrednika", anchor=tk.CENTER)
         self.tree.heading("4", text="Data dodania", anchor=tk.CENTER)
-        self.tree.heading("5", text="Cena oferty", anchor=tk.CENTER)
 
         self.cursor.execute("SELECT * FROM Oferty")
         rows = self.cursor.fetchall()
@@ -249,3 +252,5 @@ class Informacje_o_tabelach:
                 self.tree.destroy()
             self.tab1_subnotebook.select(self.tab1_subtab5)
             self.Show_Umowy()
+
+
