@@ -17,6 +17,7 @@ class Informacje_o_tabelach:
     def menu(self):
         # Menu:
         if self.tab1_subframe is None and self.tab1_subnotebook is None:
+
             self.tab1_subframe = ttk.Frame(self.tab1)
             self.tab1_subnotebook = ttk.Notebook(self.tab1_subframe)
             self.tab1_subtab1 = ttk.Frame(self.tab1_subnotebook)
@@ -52,12 +53,12 @@ class Informacje_o_tabelach:
         self.tree.pack(expand=True, fill=tk.BOTH)
         self.tree["columns"] = ("1", "2", "3", "4", "5","6")
         self.tree.column("#0", width=0, stretch=False)
-        self.tree.column("1", width=100, minwidth=100, stretch=False,anchor=tk.CENTER)
+        self.tree.column("1", width=90, minwidth=90, stretch=False,anchor=tk.CENTER)
         self.tree.column("2", width=100, minwidth=100, stretch=False,anchor=tk.CENTER)
         self.tree.column("3", width=100, minwidth=100, stretch=False,anchor=tk.CENTER)
         self.tree.column("4", width=250, minwidth=250, stretch=False,anchor=tk.CENTER)
         self.tree.column("5", width=100, minwidth=100, stretch=False,anchor=tk.CENTER)
-        self.tree.column("6", width=200, minwidth=200, stretch=False,anchor=tk.CENTER)
+        self.tree.column("6", width=210, minwidth=210, stretch=False,anchor=tk.CENTER)
         self.tree.heading("#0", text="", anchor=tk.CENTER)
         self.tree.heading("1", text="ID Klienta", anchor=tk.CENTER)
         self.tree.heading("2", text="Imie", anchor=tk.CENTER)

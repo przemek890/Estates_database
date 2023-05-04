@@ -5,14 +5,10 @@ import Window.window as wind
 from tkinter import ttk
 
 
-
-
-
 if __name__ == "__main__":
-    connect = db.Database_Connect()                                      # Połączenie z baza
-    window = wind.Window()                                                 # Tworzenie okna
-    notebook = ttk.Notebook(window.root)                              # Notebook - zakładki
-
+    connect = db.Database_Connect()                                  # Połączenie z baza
+    window = wind.Window()                                           # Tworzenie okna
+    notebook = ttk.Notebook(window.root)                             # Notebook - zakładki
 
     # Tworzenie zakladek
     tuck1 = info.Informacje_o_tabelach(window.root,connect.cursor,notebook)

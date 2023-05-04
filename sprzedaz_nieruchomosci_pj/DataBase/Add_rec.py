@@ -48,14 +48,17 @@ class Dodaj_rekord:
         popup_window = tk.Toplevel(self.root)
         popup_window.title("Dodaj Klienta")
         quarter_screen_width = 400
-        quarter_screen_height = 280
+        quarter_screen_height = 285
+
         popup_window.transient(self.root)
+        popup_window.overrideredirect(True)
+
         popup_window.grab_set()
 
-        screen_width = popup_window.winfo_screenwidth()
-        screen_height = popup_window.winfo_screenheight()
+        screen_width = self.root.winfo_screenwidth()
+        screen_height = self.root.winfo_screenheight()
         x = int((screen_width - quarter_screen_width) / 2)
-        y = int((screen_height - quarter_screen_height) / 2)
+        y = int((screen_height - quarter_screen_height + 300) / 2)
 
         popup_window.geometry(f"{quarter_screen_width}x{quarter_screen_height}+{x}+{y}")
         popup_window.resizable(False, False)
@@ -63,31 +66,32 @@ class Dodaj_rekord:
         frame = ttk.Frame(popup_window)
         frame.pack(expand=True, fill="both", padx=5, pady=5)
 
-        # stwórz etykiety i pola tekstowe
-        tk.Label(frame, text="Imię:").grid(row=0, column=0, padx=5, pady=5)
+        tk.Label(frame, text="DODAJ KLIENTA").grid(row=0, column=0, columnspan=2, padx=5, pady=5, sticky="ew")
+
+        tk.Label(frame, text="Imię:").grid(row=1, column=0, padx=5, pady=5,sticky="e")
         self.imie_entry = tk.Entry(frame)
-        self.imie_entry.grid(row=0, column=1, padx=5, pady=5)
+        self.imie_entry.grid(row=1, column=1, padx=5, pady=5,sticky="w")
 
-        tk.Label(frame, text="Nazwisko:").grid(row=1, column=0, padx=5, pady=5)
+        tk.Label(frame, text="Nazwisko:").grid(row=2, column=0, padx=5, pady=5,sticky="e")
         self.nazwisko_entry = tk.Entry(frame)
-        self.nazwisko_entry.grid(row=1, column=1, padx=5, pady=5)
+        self.nazwisko_entry.grid(row=2, column=1, padx=5, pady=5,sticky="w")
 
-        tk.Label(frame, text="Adres_zameldowania:").grid(row=2, column=0, padx=5, pady=5)
+        tk.Label(frame, text="Adres_zameldowania:").grid(row=3, column=0, padx=5, pady=5,sticky="e")
         self.Adres_zameldowania_entry = tk.Entry(frame)
-        self.Adres_zameldowania_entry.grid(row=2, column=1, padx=5, pady=5)
+        self.Adres_zameldowania_entry.grid(row=3, column=1, padx=5, pady=5,sticky="w")
 
         # stwórz etykiety i pola tekstowe
-        tk.Label(frame, text="Numer telefonu: ").grid(row=3, column=0, padx=5, pady=5)
+        tk.Label(frame, text="Numer telefonu: ").grid(row=4, column=0, padx=5, pady=5,sticky="e")
         self.numer_telefonu_entry = tk.Entry(frame)
-        self.numer_telefonu_entry.grid(row=3, column=1, padx=5, pady=5)
+        self.numer_telefonu_entry.grid(row=4, column=1, padx=5, pady=5,sticky="w")
 
-        tk.Label(frame, text="Adres email: ").grid(row=4, column=0, padx=5, pady=5)
+        tk.Label(frame, text="Adres email: ").grid(row=5, column=0, padx=5, pady=5,sticky="e")
         self.adres_email_entry = tk.Entry(frame)
-        self.adres_email_entry.grid(row=4, column=1, padx=5, pady=5)
+        self.adres_email_entry.grid(row=5, column=1, padx=5, pady=5,sticky="w")
 
         # stwórz przyciski
         button_frame = ttk.Frame(frame)
-        button_frame.grid(row=5, column=0, columnspan=2, padx=5, pady=5)
+        button_frame.grid(row=6, column=0, columnspan=2, padx=5, pady=5)
 
         def add_client():
             # pobierz wartości z pól tekstowych
@@ -103,9 +107,11 @@ class Dodaj_rekord:
                 messagebox.showerror("Błąd", f"Niepoprawne dodanie rekordu do bazy danych!\n")
             else:
                 popup_window.destroy()
+                self.root.deiconify()
 
-        tk.Button(button_frame, text="Dodaj klienta", command=add_client).grid(row=6, column=0, padx=5, pady=5)
-        tk.Button(button_frame, text="Anuluj", command=popup_window.destroy).grid(row=6, column=1, padx=5, pady=5)
+        tk.Button(button_frame, text="Dodaj", command=add_client, width=15).grid(row=7, column=0, padx=5,pady=5, sticky='w')
+        tk.Button(button_frame, text="Anuluj", command=popup_window.destroy, width=15).grid(row=7, column=1, padx=5,pady=5, sticky='e')
+
         popup_window.protocol("WM_DELETE_WINDOW", popup_window.destroy)
     def add_client_to_database(self,imie, nazwisko, Adres_zameldowania, numer_telefonu,adres_email):
         # pobranie danych od użytkownika
@@ -123,14 +129,16 @@ class Dodaj_rekord:
         popup_window = tk.Toplevel(self.root)
         popup_window.title("Dodaj Nieruchomosci")
         quarter_screen_width = 400
-        quarter_screen_height = 280
+        quarter_screen_height = 325
         popup_window.transient(self.root)
+
+        popup_window.overrideredirect(True)
         popup_window.grab_set()
 
         screen_width = popup_window.winfo_screenwidth()
         screen_height = popup_window.winfo_screenheight()
         x = int((screen_width - quarter_screen_width) / 2)
-        y = int((screen_height - quarter_screen_height) / 2)
+        y = int((screen_height - quarter_screen_height + 300 )/ 2)
 
         popup_window.geometry(f"{quarter_screen_width}x{quarter_screen_height}+{x}+{y}")
         popup_window.resizable(False, False)
@@ -138,35 +146,37 @@ class Dodaj_rekord:
         frame = ttk.Frame(popup_window)
         frame.pack(expand=True, fill="both", padx=5, pady=5)
 
+        tk.Label(frame, text="DODAJ NIERUCHOMOSC").grid(row=0, column=0, columnspan=2, padx=5, pady=5, sticky="ew")
+
         # stwórz etykiety i pola tekstowe
-        tk.Label(frame, text="Kraj:").grid(row=0, column=0, padx=5, pady=5)
+        tk.Label(frame, text="Kraj:").grid(row=1, column=0, padx=5, pady=5)
         self.Kraj_entry = tk.Entry(frame)
-        self.Kraj_entry.grid(row=0, column=1, padx=5, pady=5)
+        self.Kraj_entry.grid(row=1, column=1, padx=5, pady=5)
 
-        tk.Label(frame, text="Miejscowosc:").grid(row=1, column=0, padx=5, pady=5)
+        tk.Label(frame, text="Miejscowosc:").grid(row=2, column=0, padx=5, pady=5)
         self.Miejscowosc_entry = tk.Entry(frame)
-        self.Miejscowosc_entry.grid(row=1, column=1, padx=5, pady=5)
+        self.Miejscowosc_entry.grid(row=2, column=1, padx=5, pady=5)
 
-        tk.Label(frame, text="Ulica:").grid(row=2, column=0, padx=5, pady=5)
+        tk.Label(frame, text="Ulica:").grid(row=3, column=0, padx=5, pady=5)
         self.Ulica_entry = tk.Entry(frame)
-        self.Ulica_entry.grid(row=2, column=1, padx=5, pady=5)
+        self.Ulica_entry.grid(row=3, column=1, padx=5, pady=5)
 
         # stwórz etykiety i pola tekstowe
-        tk.Label(frame, text="Powierzchnia: ").grid(row=3, column=0, padx=5, pady=5)
+        tk.Label(frame, text="Powierzchnia: ").grid(row=4, column=0, padx=5, pady=5)
         self.Powierzchnia_entry = tk.Entry(frame)
-        self.Powierzchnia_entry.grid(row=3, column=1, padx=5, pady=5)
+        self.Powierzchnia_entry.grid(row=4, column=1, padx=5, pady=5)
 
-        tk.Label(frame, text="Liczba pokoi: ").grid(row=4, column=0, padx=5, pady=5)
+        tk.Label(frame, text="Liczba pokoi: ").grid(row=5, column=0, padx=5, pady=5)
         self.Liczba_pokoi_entry = tk.Entry(frame)
-        self.Liczba_pokoi_entry.grid(row=4, column=1, padx=5, pady=5)
+        self.Liczba_pokoi_entry.grid(row=5, column=1, padx=5, pady=5)
 
-        tk.Label(frame, text="ID Typu nieruchomosci").grid(row=5, column=0, padx=5, pady=5)
+        tk.Label(frame, text="ID Typu nieruchomosci").grid(row=6, column=0, padx=5, pady=5)
         self.ID_Typu_nieruchomosci_entry = tk.Entry(frame)
-        self.ID_Typu_nieruchomosci_entry.grid(row=5, column=1, padx=5, pady=5)
+        self.ID_Typu_nieruchomosci_entry.grid(row=6, column=1, padx=5, pady=5)
 
         # stwórz przyciski
         button_frame = ttk.Frame(frame)
-        button_frame.grid(row=6, column=0, columnspan=2, padx=5, pady=5)
+        button_frame.grid(row=7, column=0, columnspan=2, padx=5, pady=5)
 
         def add_nieruchomosc():
             # pobierz wartości z pól tekstowych
@@ -184,8 +194,9 @@ class Dodaj_rekord:
             else:
                 popup_window.destroy()
 
-        tk.Button(button_frame, text="Dodaj Nieruchomosc", command=add_nieruchomosc).grid(row=7, column=0, padx=5, pady=5)
-        tk.Button(button_frame, text="Anuluj", command=popup_window.destroy).grid(row=7, column=1, padx=5, pady=5)
+        tk.Button(button_frame, text="Dodaj", command=add_nieruchomosc,width=15).grid(row=8, column=0, padx=5, pady=10,sticky='w')
+        tk.Button(button_frame, text="Anuluj", command=popup_window.destroy,width=15).grid(row=8, column=1, padx=5, pady=10,sticky='e')
+
         popup_window.protocol("WM_DELETE_WINDOW", popup_window.destroy)
     def add_nieruchomosc_to_database(self,Kraj,Miejscowosc,Ulica,Powierzchnia,Liczba_pokoi,ID_Typu_nieruchomosci):
         # pobranie danych od użytkownika
@@ -203,14 +214,16 @@ class Dodaj_rekord:
         popup_window = tk.Toplevel(self.root)
         popup_window.title("Dodaj Oferty")
         quarter_screen_width = 400
-        quarter_screen_height = 200
+        quarter_screen_height = 225
         popup_window.transient(self.root)
+
+        popup_window.overrideredirect(True)
         popup_window.grab_set()
 
         screen_width = popup_window.winfo_screenwidth()
         screen_height = popup_window.winfo_screenheight()
         x = int((screen_width - quarter_screen_width) / 2)
-        y = int((screen_height - quarter_screen_height) / 2)
+        y = int((screen_height - quarter_screen_height + 300 )/ 2)
 
         popup_window.geometry(f"{quarter_screen_width}x{quarter_screen_height}+{x}+{y}")
         popup_window.resizable(False, False)
@@ -218,23 +231,25 @@ class Dodaj_rekord:
         frame = ttk.Frame(popup_window)
         frame.pack(expand=True, fill="both", padx=5, pady=5)
 
+        tk.Label(frame, text="DODAJ OFERTE").grid(row=0, column=0, columnspan=2, padx=5, pady=5, sticky="ew")
+
         # stwórz etykiety i pola tekstowe
-        tk.Label(frame, text="Id Nieruchomosci:").grid(row=0, column=0, padx=5, pady=5)
+        tk.Label(frame, text="Id Nieruchomosci:").grid(row=1, column=0, padx=5, pady=5)
         self.Id_Nieruchomosci_entry = tk.Entry(frame)
-        self.Id_Nieruchomosci_entry.grid(row=0, column=1, padx=5, pady=5)
+        self.Id_Nieruchomosci_entry.grid(row=1, column=1, padx=5, pady=5)
 
-        tk.Label(frame, text="ID Posrednika:").grid(row=1, column=0, padx=5, pady=5)
+        tk.Label(frame, text="ID Posrednika:").grid(row=2, column=0, padx=5, pady=5)
         self.ID_Posrednika_entry = tk.Entry(frame)
-        self.ID_Posrednika_entry.grid(row=1, column=1, padx=5, pady=5)
+        self.ID_Posrednika_entry.grid(row=2, column=1, padx=5, pady=5)
 
         # stwórz etykiety i pola tekstowe
-        tk.Label(frame, text="Data dodania:").grid(row=2, column=0, padx=5, pady=5)
+        tk.Label(frame, text="Data dodania:").grid(row=3, column=0, padx=5, pady=5)
         self.Data_dodania_entry = tk.Entry(frame)
-        self.Data_dodania_entry.grid(row=2, column=1, padx=5, pady=5)
+        self.Data_dodania_entry.grid(row=3, column=1, padx=5, pady=5)
 
         # stwórz przyciski
         button_frame = ttk.Frame(frame)
-        button_frame.grid(row=3, column=0, columnspan=2, padx=5, pady=5)
+        button_frame.grid(row=4, column=0, columnspan=2, padx=5, pady=5)
 
         def add_oferty():
             # pobierz wartości z pól tekstowych
@@ -249,8 +264,9 @@ class Dodaj_rekord:
             else:
                 popup_window.destroy()
 
-        tk.Button(button_frame, text="Dodaj Oferte", command=add_oferty).grid(row=7, column=0, padx=5, pady=5)
-        tk.Button(button_frame, text="Anuluj", command=popup_window.destroy).grid(row=7, column=1, padx=5, pady=5)
+        tk.Button(button_frame, text="Dodaj", command=add_oferty,width=15).grid(row=5, column=0, padx=5, pady=15,sticky='w')
+        tk.Button(button_frame, text="Anuluj", command=popup_window.destroy,width=15).grid(row=5, column=1, padx=5, pady=15,sticky='e')
+
         popup_window.protocol("WM_DELETE_WINDOW", popup_window.destroy)
     def add_oferty_to_database(self,Id_Nieruchomosci,ID_Posrednika,Data_dodania):
         # pobranie danych od użytkownika
@@ -268,14 +284,16 @@ class Dodaj_rekord:
         popup_window = tk.Toplevel(self.root)
         popup_window.title("Dodaj Posrednika")
         quarter_screen_width = 400
-        quarter_screen_height = 200
+        quarter_screen_height = 250
         popup_window.transient(self.root)
+
+        popup_window.overrideredirect(True)
         popup_window.grab_set()
 
         screen_width = popup_window.winfo_screenwidth()
         screen_height = popup_window.winfo_screenheight()
         x = int((screen_width - quarter_screen_width) / 2)
-        y = int((screen_height - quarter_screen_height) / 2)
+        y = int((screen_height - quarter_screen_height + 300) / 2)
 
         popup_window.geometry(f"{quarter_screen_width}x{quarter_screen_height}+{x}+{y}")
         popup_window.resizable(False, False)
@@ -283,27 +301,29 @@ class Dodaj_rekord:
         frame = ttk.Frame(popup_window)
         frame.pack(expand=True, fill="both", padx=5, pady=5)
 
+        tk.Label(frame, text="DODAJ POSREDNIKA").grid(row=0, column=0, columnspan=2, padx=5, pady=5, sticky="ew")
+
         # stwórz etykiety i pola tekstowe
-        tk.Label(frame, text="Imię:").grid(row=0, column=0, padx=5, pady=5)
+        tk.Label(frame, text="Imię:").grid(row=1, column=0, padx=5, pady=5)
         self.imie_entry = tk.Entry(frame)
-        self.imie_entry.grid(row=0, column=1, padx=5, pady=5)
+        self.imie_entry.grid(row=1, column=1, padx=5, pady=5)
 
-        tk.Label(frame, text="Nazwisko:").grid(row=1, column=0, padx=5, pady=5)
+        tk.Label(frame, text="Nazwisko:").grid(row=2, column=0, padx=5, pady=5)
         self.nazwisko_entry = tk.Entry(frame)
-        self.nazwisko_entry.grid(row=1, column=1, padx=5, pady=5)
+        self.nazwisko_entry.grid(row=2, column=1, padx=5, pady=5)
 
         # stwórz etykiety i pola tekstowe
-        tk.Label(frame, text="Numer telefonu: ").grid(row=2, column=0, padx=5, pady=5)
+        tk.Label(frame, text="Numer telefonu: ").grid(row=3, column=0, padx=5, pady=5)
         self.numer_telefonu_entry = tk.Entry(frame)
-        self.numer_telefonu_entry.grid(row=2, column=1, padx=5, pady=5)
+        self.numer_telefonu_entry.grid(row=3, column=1, padx=5, pady=5)
 
-        tk.Label(frame, text="Adres email: ").grid(row=3, column=0, padx=5, pady=5)
+        tk.Label(frame, text="Adres email: ").grid(row=4, column=0, padx=5, pady=5)
         self.adres_email_entry = tk.Entry(frame)
-        self.adres_email_entry.grid(row=3, column=1, padx=5, pady=5)
+        self.adres_email_entry.grid(row=4, column=1, padx=5, pady=5)
 
         # stwórz przyciski
         button_frame = ttk.Frame(frame)
-        button_frame.grid(row=4, column=0, columnspan=2, padx=5, pady=5)
+        button_frame.grid(row=5, column=0, columnspan=2, padx=5, pady=5)
 
         def add_posrednik():
             # pobierz wartości z pól tekstowych
@@ -319,8 +339,8 @@ class Dodaj_rekord:
             else:
                 popup_window.destroy()
 
-        tk.Button(button_frame, text="Dodaj Posrednika", command=add_posrednik).grid(row=6, column=0, padx=5, pady=5)
-        tk.Button(button_frame, text="Anuluj", command=popup_window.destroy).grid(row=6, column=1, padx=5, pady=5)
+        tk.Button(button_frame, text="Dodaj", command=add_posrednik,width=15).grid(row=6, column=0, padx=5, pady=10,sticky='w')
+        tk.Button(button_frame, text="Anuluj", command=popup_window.destroy,width=15).grid(row=6, column=1, padx=5, pady=10,sticky='e')
         popup_window.protocol("WM_DELETE_WINDOW", popup_window.destroy)
     def add_posrednik_to_database(self,imie, nazwisko,numer_telefonu,adres_email):
         # pobranie danych od użytkownika
@@ -338,14 +358,16 @@ class Dodaj_rekord:
         popup_window = tk.Toplevel(self.root)
         popup_window.title("Dodaj Transakcje")
         quarter_screen_width = 400
-        quarter_screen_height = 200
+        quarter_screen_height = 225
         popup_window.transient(self.root)
+
+        popup_window.overrideredirect(True)
         popup_window.grab_set()
 
         screen_width = popup_window.winfo_screenwidth()
         screen_height = popup_window.winfo_screenheight()
         x = int((screen_width - quarter_screen_width) / 2)
-        y = int((screen_height - quarter_screen_height) / 2)
+        y = int((screen_height - quarter_screen_height + 300) / 2)
 
         popup_window.geometry(f"{quarter_screen_width}x{quarter_screen_height}+{x}+{y}")
         popup_window.resizable(False, False)
@@ -353,23 +375,25 @@ class Dodaj_rekord:
         frame = ttk.Frame(popup_window)
         frame.pack(expand=True, fill="both", padx=5, pady=5)
 
+        tk.Label(frame, text="DODAJ TRANSAKCJE").grid(row=0, column=0, columnspan=2, padx=5, pady=5, sticky="ew")
+
         # stwórz etykiety i pola tekstowe
-        tk.Label(frame, text="ID Umowy:").grid(row=0, column=0, padx=5, pady=5)
+        tk.Label(frame, text="ID Umowy:").grid(row=1, column=0, padx=5, pady=5)
         self.ID_Umowy_entry = tk.Entry(frame)
-        self.ID_Umowy_entry.grid(row=0, column=1, padx=5, pady=5)
+        self.ID_Umowy_entry.grid(row=1, column=1, padx=5, pady=5)
 
-        tk.Label(frame, text="ID Posrednika:").grid(row=1, column=0, padx=5, pady=5)
+        tk.Label(frame, text="ID Posrednika:").grid(row=2, column=0, padx=5, pady=5)
         self.ID_Posrednika_entry = tk.Entry(frame)
-        self.ID_Posrednika_entry.grid(row=1, column=1, padx=5, pady=5)
+        self.ID_Posrednika_entry.grid(row=2, column=1, padx=5, pady=5)
 
         # stwórz etykiety i pola tekstowe
-        tk.Label(frame, text="Kwota transakcji: ").grid(row=2, column=0, padx=5, pady=5)
+        tk.Label(frame, text="Kwota transakcji: ").grid(row=3, column=0, padx=5, pady=5)
         self.Kwota_transakcji_entry = tk.Entry(frame)
-        self.Kwota_transakcji_entry.grid(row=2, column=1, padx=5, pady=5)
+        self.Kwota_transakcji_entry.grid(row=3, column=1, padx=5, pady=5)
 
         # stwórz przyciski
         button_frame = ttk.Frame(frame)
-        button_frame.grid(row=3, column=0, columnspan=2, padx=5, pady=5)
+        button_frame.grid(row=6, column=0, columnspan=2, padx=5, pady=5)
 
         def add_transakcja():
             # pobierz wartości z pól tekstowych
@@ -384,8 +408,8 @@ class Dodaj_rekord:
             else:
                 popup_window.destroy()
 
-        tk.Button(button_frame, text="Dodaj Transakcje", command=add_transakcja).grid(row=6, column=0, padx=5, pady=5)
-        tk.Button(button_frame, text="Anuluj", command=popup_window.destroy).grid(row=6, column=1, padx=5, pady=5)
+        tk.Button(button_frame, text="Dodaj", command=add_transakcja,width=15).grid(row=4, column=0, padx=5, pady=10,sticky='w')
+        tk.Button(button_frame, text="Anuluj", command=popup_window.destroy,width=15).grid(row=4, column=1, padx=5, pady=10,sticky='e')
         popup_window.protocol("WM_DELETE_WINDOW", popup_window.destroy)
     def add_transakcja_to_database(self,ID_Umowy,ID_Posrednika,Kwota_transakcji):
         # pobranie danych od użytkownika
@@ -403,14 +427,16 @@ class Dodaj_rekord:
         popup_window = tk.Toplevel(self.root)
         popup_window.title("Dodaj Typ nieruchomosci")
         quarter_screen_width = 400
-        quarter_screen_height = 150
+        quarter_screen_height = 175
         popup_window.transient(self.root)
+
+        popup_window.overrideredirect(True)
         popup_window.grab_set()
 
         screen_width = popup_window.winfo_screenwidth()
         screen_height = popup_window.winfo_screenheight()
         x = int((screen_width - quarter_screen_width) / 2)
-        y = int((screen_height - quarter_screen_height) / 2)
+        y = int((screen_height - quarter_screen_height + 300) / 2)
 
         popup_window.geometry(f"{quarter_screen_width}x{quarter_screen_height}+{x}+{y}")
         popup_window.resizable(False, False)
@@ -418,18 +444,20 @@ class Dodaj_rekord:
         frame = ttk.Frame(popup_window)
         frame.pack(expand=True, fill="both", padx=5, pady=5)
 
-        # stwórz etykiety i pola tekstowe
-        tk.Label(frame, text="Nazwa:").grid(row=0, column=0, padx=5, pady=5)
-        self.nazwa_entry = tk.Entry(frame)
-        self.nazwa_entry.grid(row=0, column=1, padx=5, pady=5)
+        tk.Label(frame, text="DODAJ TYP NIERUCHOMOSCI").grid(row=0, column=0, columnspan=2, padx=5, pady=5, sticky="ew")
 
-        tk.Label(frame, text="Opis:").grid(row=1, column=0, padx=5, pady=5)
+        # stwórz etykiety i pola tekstowe
+        tk.Label(frame, text="Nazwa:").grid(row=1, column=0, padx=5, pady=5)
+        self.nazwa_entry = tk.Entry(frame)
+        self.nazwa_entry.grid(row=1, column=1, padx=5, pady=5)
+
+        tk.Label(frame, text="Opis:").grid(row=2, column=0, padx=5, pady=5)
         self.opis_entry = tk.Entry(frame)
-        self.opis_entry.grid(row=1, column=1, padx=5, pady=5)
+        self.opis_entry.grid(row=2, column=1, padx=5, pady=5)
 
         # stwórz przyciski
         button_frame = ttk.Frame(frame)
-        button_frame.grid(row=2, column=0, columnspan=2, padx=5, pady=5)
+        button_frame.grid(row=3, column=0, columnspan=2, padx=5, pady=5)
 
         def add_typ_nieruchomosci():
             # pobierz wartości z pól tekstowych
@@ -443,8 +471,8 @@ class Dodaj_rekord:
             else:
                 popup_window.destroy()
 
-        tk.Button(button_frame, text="Dodaj Typ nieruchomosci", command=add_typ_nieruchomosci).grid(row=6, column=0, padx=5, pady=5)
-        tk.Button(button_frame, text="Anuluj", command=popup_window.destroy).grid(row=6, column=1, padx=5, pady=5)
+        tk.Button(button_frame, text="Dodaj", command=add_typ_nieruchomosci,width=15).grid(row=4, column=0, padx=5, pady=10,sticky='w')
+        tk.Button(button_frame, text="Anuluj", command=popup_window.destroy,width=15).grid(row=4, column=1, padx=5, pady=10,sticky='e')
         popup_window.protocol("WM_DELETE_WINDOW", popup_window.destroy)
     def add_typy_nieruchomosci_to_database(self,nazwa,opis):
         # pobranie danych od użytkownika
@@ -462,14 +490,16 @@ class Dodaj_rekord:
         popup_window = tk.Toplevel(self.root)
         popup_window.title("Dodaj Umowe")
         quarter_screen_width = 400
-        quarter_screen_height = 280
+        quarter_screen_height = 235
         popup_window.transient(self.root)
+
+        popup_window.overrideredirect(True)
         popup_window.grab_set()
 
         screen_width = popup_window.winfo_screenwidth()
         screen_height = popup_window.winfo_screenheight()
         x = int((screen_width - quarter_screen_width) / 2)
-        y = int((screen_height - quarter_screen_height) / 2)
+        y = int((screen_height - quarter_screen_height + 300 )/ 2)
 
         popup_window.geometry(f"{quarter_screen_width}x{quarter_screen_height}+{x}+{y}")
         popup_window.resizable(False, False)
@@ -477,27 +507,29 @@ class Dodaj_rekord:
         frame = ttk.Frame(popup_window)
         frame.pack(expand=True, fill="both", padx=5, pady=5)
 
+        tk.Label(frame, text="DODAJ UMOWE").grid(row=0, column=0, columnspan=2, padx=5, pady=5, sticky="ew")
+
         # stwórz etykiety i pola tekstowe
-        tk.Label(frame, text="Data zawarcia:").grid(row=0, column=0, padx=5, pady=5)
+        tk.Label(frame, text="Data zawarcia:").grid(row=1, column=0, padx=5, pady=5)
         self.Data_zawarcia_entry = tk.Entry(frame)
-        self.Data_zawarcia_entry.grid(row=0, column=1, padx=5, pady=5)
+        self.Data_zawarcia_entry.grid(row=1, column=1, padx=5, pady=5)
 
-        tk.Label(frame, text="Data podpisania:").grid(row=1, column=0, padx=5, pady=5)
+        tk.Label(frame, text="Data podpisania:").grid(row=2, column=0, padx=5, pady=5)
         self.Data_podpisania_entry = tk.Entry(frame)
-        self.Data_podpisania_entry.grid(row=1, column=1, padx=5, pady=5)
+        self.Data_podpisania_entry.grid(row=2, column=1, padx=5, pady=5)
 
-        tk.Label(frame, text="ID nieruchomosci:").grid(row=2, column=0, padx=5, pady=5)
+        tk.Label(frame, text="ID nieruchomosci:").grid(row=3, column=0, padx=5, pady=5)
         self.ID_nieruchomosci_entry = tk.Entry(frame)
-        self.ID_nieruchomosci_entry.grid(row=2, column=1, padx=5, pady=5)
+        self.ID_nieruchomosci_entry.grid(row=3, column=1, padx=5, pady=5)
 
         # stwórz etykiety i pola tekstowe
-        tk.Label(frame, text="ID klienta: ").grid(row=3, column=0, padx=5, pady=5)
+        tk.Label(frame, text="ID klienta: ").grid(row=4, column=0, padx=5, pady=5)
         self.ID_klienta_entry = tk.Entry(frame)
-        self.ID_klienta_entry.grid(row=3, column=1, padx=5, pady=5)
+        self.ID_klienta_entry.grid(row=4, column=1, padx=5, pady=5)
 
         # stwórz przyciski
         button_frame = ttk.Frame(frame)
-        button_frame.grid(row=4, column=0, columnspan=2, padx=5, pady=5)
+        button_frame.grid(row=5, column=0, columnspan=2, padx=5, pady=5)
 
         def add_umowa():
             # pobierz wartości z pól tekstowych
@@ -513,8 +545,8 @@ class Dodaj_rekord:
             else:
                 popup_window.destroy()
 
-        tk.Button(button_frame, text="Dodaj Umowe", command=add_umowa).grid(row=6, column=0, padx=5, pady=5)
-        tk.Button(button_frame, text="Anuluj", command=popup_window.destroy).grid(row=6, column=1, padx=5, pady=5)
+        tk.Button(button_frame, text="Dodaj", command=add_umowa,width=15).grid(row=6, column=0, padx=5, pady=5,sticky='w')
+        tk.Button(button_frame, text="Anuluj", command=popup_window.destroy,width=15).grid(row=6, column=1, padx=5, pady=5,sticky='e')
         popup_window.protocol("WM_DELETE_WINDOW", popup_window.destroy)
     def add_umowa_to_database(self,Data_zawarcia,Data_podpisania,ID_nieruchomosci,ID_klienta):
         # pobranie danych od użytkownika

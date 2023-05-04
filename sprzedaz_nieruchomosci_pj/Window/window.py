@@ -7,7 +7,7 @@ class Window:
         self.root = tk.Tk()
         self.root.title("Sprzedaz nieruchomosci - Przemysław Janiszewski")
         quarter_screen_width = 1000
-        quarter_screen_height = 300
+        quarter_screen_height = 800
 
         screen_width = self.root.winfo_screenwidth()
         screen_height = self.root.winfo_screenheight()
