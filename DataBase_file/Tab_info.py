@@ -14,7 +14,7 @@ class Informacje_o_tabelach:
         self.notebook.pack()
         self.tab1_subframe = None
         self.tab1_subnotebook = None
-
+        self.tab1_submenu = None
     def menu(self):
         # Menu:
         if self.tab1_subframe is None and self.tab1_subnotebook is None:

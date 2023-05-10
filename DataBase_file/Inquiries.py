@@ -15,6 +15,7 @@ class Inquiries:
         self.notebook.pack()
         self.tab4_subframe = None
         self.tab4_subnotebook = None
+        self.tab4_submenu = None
         self.D1 = ""
         self.D2 = ""
     def menu(self):

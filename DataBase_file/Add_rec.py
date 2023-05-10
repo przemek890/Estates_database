@@ -1,6 +1,7 @@
 from tkinter import ttk, LEFT
 import tkinter.messagebox as messagebox
 import tkinter as tk
+import Main.Global_variables as globalvb
 
 """Moduł dodawania rekordow"""
 class Dodaj_rekord:
@@ -16,7 +17,6 @@ class Dodaj_rekord:
         self.tab2_subframe = None
         self.tab2_subnotebook = None
         self.tab2_submenu = None
-        self.nazwa_entry = None
     def menu(self):
         # Menu:
             self.tab2_subframe = ttk.Frame(self.tab2)
@@ -106,6 +106,7 @@ class Dodaj_rekord:
                 adres_email = self.adres_email_entry.get()
 
                 self.add_client_to_database(imie, nazwisko, Adres_zameldowania, numer_telefonu, adres_email)
+
                 messagebox.showinfo("Sukcess", f"Dodano rekord do bazy danych!\n")
 
                 self.imie_entry.delete(0, tk.END)
@@ -585,15 +586,11 @@ class Dodaj_rekord:
             self.Add_Umowy()
 
     def add_client_to_database(self, imie, nazwisko, Adres_zameldowania, numer_telefonu, adres_email):
-        # pobranie danych od użytkownika
-
-        # wykonanie zapytania dodającego rekord do tabeli "Klienci" w bazie danych
         sql = "INSERT INTO Klienci (Imie,Nazwisko,Adres_Zameldowania,Numer_telefonu,Adres_email) VALUES (%s, %s, %s,%s,%s)"
         val = (imie, nazwisko, Adres_zameldowania, numer_telefonu, adres_email)
         self.cursor.execute(sql, val)
-        self.root.update()  # aktualizacja widoku
+        self.root.update()
 
-        # zatwierdzenie zmian w bazie danych
         self.conn.commit()
     def add_nieruchomosc_to_database(self, Kraj, Miejscowosc, Ulica, Powierzchnia, Liczba_pokoi, ID_Typu_nieruchomosci):
         # pobranie danych od użytkownika
@@ -661,6 +658,4 @@ class Dodaj_rekord:
 
         # zatwierdzenie zmian w bazie danych
         self.conn.commit()
-
-
 
