@@ -1,9 +1,8 @@
 from datetime import datetime
-from tkinter import ttk, LEFT
+from tkinter import ttk, LEFT, TOP
 import tkinter.messagebox as messagebox
 import tkinter as tk
 from bson import ObjectId
-
 
 class Mongo_DB:
     def __init__(self, root,notebook,connect_mn):
@@ -53,8 +52,8 @@ class Mongo_DB:
                                                    "Nieruchomosci o powierzchni większej od zadanej",
                                                    command=self.Opcje_menu)
 
-                self.tab5_submenu.configure(width=14)
-                self.tab5_submenu.pack(side=LEFT, padx=10, pady=350)
+                self.tab5_submenu.configure(width=74)
+                self.tab5_submenu.pack(side=TOP, padx=100, pady=350)
 
     def Show_records(self):
         records = self.connect_mn.collection.find()
@@ -112,6 +111,7 @@ class Mongo_DB:
         popup_window.transient(self.root)
 
         popup_window.overrideredirect(True)
+        popup_window.attributes('-topmost', False)
         popup_window.grab_set()
 
         screen_width = popup_window.winfo_screenwidth()
@@ -296,30 +296,37 @@ class Mongo_DB:
                 popup_window.destroy()
 
         def delete():
-            self.rec1_entry.delete(0, tk.END)
-            self.rec2_entry.delete(0, tk.END)
-            self.rec3_entry.delete(0, tk.END)
-            self.rec4_entry.delete(0, tk.END)
-            self.rec5_entry.delete(0, tk.END)
-            self.rec6_entry.delete(0, tk.END)
-            self.rec7_entry.delete(0, tk.END)
-            self.rec8_entry.delete(0, tk.END)
-            self.rec9_entry.delete(0, tk.END)
-            self.rec10_entry.delete(0, tk.END)
-            self.rec11_entry.delete(0, tk.END)
-            self.rec12_entry.delete(0, tk.END)
-            self.rec13_entry.delete(0, tk.END)
-            self.rec14_entry.delete(0, tk.END)
-            self.rec15_entry.delete(0, tk.END)
-            self.rec16_entry.delete(0, tk.END)
-            self.rec17_entry.delete(0, tk.END)
-            self.rec18_entry.delete(0, tk.END)
-            self.rec19_entry.delete(0, tk.END)
-            self.rec20_entry.delete(0, tk.END)
+            info = messagebox.askyesnocancel("Sukcess", f"Czy napewno chcesz zakończyć akcje?")
+            if info is True:
+                self.rec1_entry.delete(0, tk.END)
+                self.rec2_entry.delete(0, tk.END)
+                self.rec3_entry.delete(0, tk.END)
+                self.rec4_entry.delete(0, tk.END)
+                self.rec5_entry.delete(0, tk.END)
+                self.rec6_entry.delete(0, tk.END)
+                self.rec7_entry.delete(0, tk.END)
+                self.rec8_entry.delete(0, tk.END)
+                self.rec9_entry.delete(0, tk.END)
+                self.rec10_entry.delete(0, tk.END)
+                self.rec11_entry.delete(0, tk.END)
+                self.rec12_entry.delete(0, tk.END)
+                self.rec13_entry.delete(0, tk.END)
+                self.rec14_entry.delete(0, tk.END)
+                self.rec15_entry.delete(0, tk.END)
+                self.rec16_entry.delete(0, tk.END)
+                self.rec17_entry.delete(0, tk.END)
+                self.rec18_entry.delete(0, tk.END)
+                self.rec19_entry.delete(0, tk.END)
+                self.rec20_entry.delete(0, tk.END)
+                popup_window.destroy()
+                self.tab5_submenu.configure(width=74)
+                self.tab5_submenu.pack(side=TOP, padx=100)
+            else:
+                self.empty_window()
 
         tk.Button(button_frame, text="Dodaj", command=add_record, width=15).grid(row=8, column=0, padx=5, pady=10,
                                                                                        sticky='w')
-        tk.Button(button_frame, text="Reset", command=delete, width=15).grid(row=8, column=1, padx=5, pady=10,
+        tk.Button(button_frame, text="Zamknij", command=delete, width=15).grid(row=8, column=1, padx=5, pady=10,
                                                                              sticky='e')
     def Remove_records(self):
         popup_window = tk.Toplevel(self.root)
@@ -329,6 +336,7 @@ class Mongo_DB:
 
         popup_window.transient(self.root)
         popup_window.overrideredirect(True)
+        popup_window.attributes('-topmost', False)
 
         popup_window.grab_set()
 
@@ -372,12 +380,18 @@ class Mongo_DB:
                 popup_window.destroy()
 
         def delete():
-            self.ID_entry.delete(0, tk.END)
+            info = messagebox.askyesnocancel("Sukcess", f"Czy napewno chcesz zakończyć akcje?")
+            if info is True:
+                self.ID_entry.delete(0, tk.END)
+                popup_window.destroy()
+                self.tab5_submenu.configure(width=74)
+                self.tab5_submenu.pack(side=TOP, padx=100)
+            else:
+                self.empty_window()
 
         tk.Button(button_frame, text="Usun", command=rem, width=15).grid(row=7, column=0, padx=5, pady=5, sticky='w')
-        tk.Button(button_frame, text="Reset", command=delete, width=15).grid(row=7, column=1, padx=5, pady=5,
+        tk.Button(button_frame, text="Zamknij", command=delete, width=15).grid(row=7, column=1, padx=5, pady=5,
                                                                              sticky='e')
-
 
     def kwerenda_1(self):
         popup_window = tk.Toplevel(self.root)
@@ -387,7 +401,7 @@ class Mongo_DB:
 
         popup_window.transient(self.root)
         popup_window.overrideredirect(True)
-
+        popup_window.attributes('-topmost', False)
         popup_window.grab_set()
 
         screen_width = self.root.winfo_screenwidth()
@@ -483,12 +497,19 @@ class Mongo_DB:
                 self.D2_entry.delete(0, tk.END)
 
         def delete():
-            self.D1_entry.delete(0, tk.END)
-            self.D2_entry.delete(0, tk.END)
+            info = messagebox.askyesnocancel("Sukcess",f"Czy napewno chcesz zakończyć akcje?")
+            if info is True:
+                self.D1_entry.delete(0, tk.END)
+                self.D2_entry.delete(0, tk.END)
+                popup_window.destroy()
+                self.tab5_submenu.configure(width=74)
+                self.tab5_submenu.pack(side=TOP, padx=100)
+            else:
+                self.empty_window()
 
 
         tk.Button(button_frame, text="Zatwierdz", command=get_values, width=15).grid(row=7, column=0, padx=5,pady=5, sticky='w')
-        tk.Button(button_frame, text="Reset", command=delete, width=15).grid(row=7, column=1, padx=5,pady=5, sticky='e')
+        tk.Button(button_frame, text="Zamknij", command=delete, width=15).grid(row=7, column=1, padx=5,pady=5, sticky='e')
     def kwerenda_2(self):
         def kw_2():
             self.tree = ttk.Treeview(self.tab5)
@@ -535,9 +556,10 @@ class Mongo_DB:
         quarter_screen_width = 400
         quarter_screen_height = 175
 
+
         popup_window.transient(self.root)
         popup_window.overrideredirect(True)
-
+        popup_window.attributes('-topmost', False)
         popup_window.grab_set()
 
         screen_width = self.root.winfo_screenwidth()
@@ -568,19 +590,17 @@ class Mongo_DB:
         def kw_3():
             self.tree = ttk.Treeview(self.tab5)
             self.tree.pack(expand=True, fill=tk.BOTH)
-            self.tree["columns"] = ("1", "2", "3","4","5")
+            self.tree["columns"] = ("1", "2", "3","4")
             self.tree.column("#0", width=0, stretch=False)
             self.tree.column("1", width=150, minwidth=150, stretch=True, anchor=tk.CENTER)
             self.tree.column("2", width=250, minwidth=250, stretch=True, anchor=tk.CENTER)
-            self.tree.column("3", width=200, minwidth=200, stretch=True, anchor=tk.CENTER)
-            self.tree.column("4", width=100, minwidth=100, stretch=True, anchor=tk.CENTER)
-            self.tree.column("5", width=60, minwidth=60, stretch=True, anchor=tk.CENTER)
+            self.tree.column("3", width=250, minwidth=250, stretch=True, anchor=tk.CENTER)
+            self.tree.column("4", width=110, minwidth=110, stretch=True, anchor=tk.CENTER)
             self.tree.heading("#0", text="", anchor=tk.CENTER)
             self.tree.heading("1", text="Imie i nazwisko", anchor=tk.CENTER)
             self.tree.heading("2", text="Adres nieruchomości", anchor=tk.CENTER)
             self.tree.heading("3", text="Dane pośrednika", anchor=tk.CENTER)
             self.tree.heading("4", text="Kwota transakcji", anchor=tk.CENTER)
-            self.tree.heading("5", text="", anchor=tk.CENTER)
 
             query = {
                 "Imie_posrednika": self.D1,
@@ -596,7 +616,8 @@ class Mongo_DB:
                         "_id": 0,
                         "Imię i nazwisko": {"$concat": ["$Imie_klienta", " ", "$Nazwisko_klienta"]},
                         "Adres nieruchomości": {"$concat": ["$Kraj", ", ", "$Miejscowosc", ", ", "$Ulica"]},
-                        "Kwota_transakcji": 1
+                        "Dane pośrednika": {"$concat": ["$Imie_posrednika", ", ", "$Nazwisko_posrednika", ", ", "$Numer_telefonu_posrednika"]},
+                        "Kwota_transakcji": 1,
                     }
                 }
             ]
@@ -604,7 +625,7 @@ class Mongo_DB:
             results = self.connect_mn.collection.aggregate(pipeline)
 
             for result in results:
-                values = [result["Imię i nazwisko"], result["Adres nieruchomości"], result["Kwota_transakcji"]]
+                values = [result["Imię i nazwisko"], result["Adres nieruchomości"],result["Dane pośrednika"],result["Kwota_transakcji"]]
                 self.tree.insert("", tk.END, text="", values=values)
 
         def get_values():
@@ -628,23 +649,30 @@ class Mongo_DB:
                 self.D1_entry.delete(0, tk.END)
                 self.D2_entry.delete(0, tk.END)
 
-
         def delete():
-            self.D1_entry.delete(0, tk.END)
-            self.D2_entry.delete(0, tk.END)
+            info = messagebox.askyesnocancel("Sukcess",f"Czy napewno chcesz zakończyć akcje?")
+            if info is True:
+                self.D1_entry.delete(0, tk.END)
+                self.D2_entry.delete(0, tk.END)
+                popup_window.destroy()
+                self.tab5_submenu.configure(width=74)
+                self.tab5_submenu.pack(side=TOP, padx=100)
+            else:
+                self.empty_window()
 
 
         tk.Button(button_frame, text="Zatwierdz", command=get_values, width=15).grid(row=7, column=0, padx=5,pady=5, sticky='w')
-        tk.Button(button_frame, text="Reset", command=delete, width=15).grid(row=7, column=1, padx=5,pady=5, sticky='e')
+        tk.Button(button_frame, text="Zamknij", command=delete, width=15).grid(row=7, column=1, padx=5,pady=5, sticky='e')
     def kwerenda_4(self):
         popup_window = tk.Toplevel(self.root)
         popup_window.title("PODAJ PIERWSZA LITERE NAZWISKA")
         quarter_screen_width = 425
         quarter_screen_height = 150
 
+
         popup_window.transient(self.root)
         popup_window.overrideredirect(True)
-
+        popup_window.attributes('-topmost', False)
         popup_window.grab_set()
 
         screen_width = self.root.winfo_screenwidth()
@@ -723,29 +751,35 @@ class Mongo_DB:
                 popup_window.destroy()
 
 
-
             except Exception as e:
                 messagebox.showerror("Błąd", f"Niepoprawne podano dane!\n")
                 print(e)
                 popup_window.destroy()
                 self.D1_entry.delete(0, tk.END)
 
-
         def delete():
-            self.D1_entry.delete(0, tk.END)
+            info = messagebox.askyesnocancel("Sukcess",f"Czy napewno chcesz zakończyć akcje?")
+            if info is True:
+                self.D1_entry.delete(0, tk.END)
+                popup_window.destroy()
+                self.tab5_submenu.configure(width=74)
+                self.tab5_submenu.pack(side=TOP, padx=100)
+            else:
+                self.empty_window()
 
 
         tk.Button(button_frame, text="Zatwierdz", command=get_values, width=15).grid(row=7, column=0, padx=5,pady=5, sticky='w')
-        tk.Button(button_frame, text="Reset", command=delete, width=15).grid(row=7, column=1, padx=5,pady=5, sticky='e')
+        tk.Button(button_frame, text="Zamknij", command=delete, width=15).grid(row=7, column=1, padx=5,pady=5, sticky='e')
     def kwerenda_5(self):
         popup_window = tk.Toplevel(self.root)
         popup_window.title("PODAJ ROZMIAR POWIERZCHNI UŻYTKOWEJ")
         quarter_screen_width = 425
         quarter_screen_height = 150
 
+
         popup_window.transient(self.root)
         popup_window.overrideredirect(True)
-
+        popup_window.attributes('-topmost', False)
         popup_window.grab_set()
 
         screen_width = self.root.winfo_screenwidth()
@@ -829,21 +863,36 @@ class Mongo_DB:
                 self.D1_entry.delete(0, tk.END)
 
         def delete():
-            self.D1_entry.delete(0, tk.END)
+            info = messagebox.askyesnocancel("Sukcess",f"Czy napewno chcesz zakończyć akcje?")
+            if info is True:
+                self.D1_entry.delete(0, tk.END)
+                popup_window.destroy()
+                self.tab5_submenu.configure(width=74)
+                self.tab5_submenu.pack(side=TOP, padx=100)
+            else:
+                self.empty_window()
 
         tk.Button(button_frame, text="Zatwierdz", command=get_values, width=15).grid(row=7, column=0, padx=5, pady=5,
                                                                                      sticky='w')
-        tk.Button(button_frame, text="Reset", command=delete, width=15).grid(row=7, column=1, padx=5, pady=5,
+        tk.Button(button_frame, text="Zamknij", command=delete, width=15).grid(row=7, column=1, padx=5, pady=5,
                                                                              sticky='e')
 
     def Opcje_menu(self, option):
+
+        self.tab5_submenu.configure(width=10)
+        self.tab5_submenu.pack(side=LEFT, padx=10, pady=350)
+
         if option == "Rekordy":
             if self.tree is not None:
                 self.tree.destroy()
             self.Show_records()
         if option == "Dodaj Rekord":
+            if self.tree is not None:
+                self.tree.destroy()
             self.Add_records()
         if option == "Usun Rekord":
+            if self.tree is not None:
+                self.tree.destroy()
             self.Remove_records()
         if option == "Umowy zawarte w danym zakresie lat":
             if self.tree is not None:
@@ -866,3 +915,7 @@ class Mongo_DB:
                 self.tree.destroy()
             self.kwerenda_5()
 
+    def empty_window(self):
+        pom = tk.Toplevel(self.root)
+        pom.resizable(False, False)
+        pom.destroy()

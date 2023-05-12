@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import ttk, LEFT, RIGHT
-from tkinter.constants import BOTTOM
+from tkinter.constants import BOTTOM, TOP
 
 """Zakładka_1 - informacje o tabelach"""
 class Informacje_o_tabelach:
@@ -18,7 +18,6 @@ class Informacje_o_tabelach:
     def menu(self):
         # Menu:
         if self.tab1_subframe is None and self.tab1_subnotebook is None:
-
             self.tab1_subframe = ttk.Frame(self.tab1)
             self.tab1_subnotebook = ttk.Notebook(self.tab1_subframe)
             self.tab1_subtab1 = ttk.Frame(self.tab1_subnotebook)
@@ -44,8 +43,8 @@ class Informacje_o_tabelach:
             self.tab1_submenu = ttk.OptionMenu(self.tab1, self.tab1_submenu_var, "Tabele", "Klienci",
                                            "Nieruchomosci", "Oferty", "Posrednicy", "Transakcje", "Typy nieruchomosci",
                                            "Umowy", command=self.Show_subtab)
-            self.tab1_submenu.configure(width=14)
-            self.tab1_submenu.pack(side=LEFT,padx=10,pady=350)
+            self.tab1_submenu.configure(width=74)
+            self.tab1_submenu.pack(side=TOP,padx=100)
 
     def Show_Klienci(self):
         self.table_frame = ttk.Frame(self.root)
@@ -74,6 +73,9 @@ class Informacje_o_tabelach:
         rows = self.cursor.fetchall()
         for row in rows:
             self.tree.insert("", tk.END, text="", values=row,)
+
+        self.tab1_submenu.configure(width=10)
+        self.tab1_submenu.pack(side=LEFT, padx=10,pady=350)
     def Show_Nieruchomosci(self):
         self.table_frame = ttk.Frame(self.root)
         self.table_frame.pack(padx=1000,expand=False, fill=tk.BOTH)
@@ -232,6 +234,10 @@ class Informacje_o_tabelach:
         for row in rows:
             self.tree.insert("", tk.END, text="", values=row)
     def Show_subtab(self, option):
+
+        self.tab1_submenu.configure(width=10)
+        self.tab1_submenu.pack(side=LEFT, padx=10,pady=350)
+
         if option == "Klienci":
             if self.tree is not None:
                 self.tree.destroy()

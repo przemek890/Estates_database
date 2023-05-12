@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import ttk, LEFT
+from tkinter import ttk, LEFT, TOP
 import tkinter.messagebox as messagebox
 
 """Zakładka wybrane zapytania"""
@@ -49,8 +49,8 @@ class Inquiries:
                                                "Nieruchomosci o powierzchni większej od zadanej",
                                                command=self.zapytania_subtab)
 
-            self.tab4_submenu.configure(width=14)
-            self.tab4_submenu.pack(side=LEFT, padx=10, pady=350)
+            self.tab4_submenu.configure(width=74)
+            self.tab4_submenu.pack(side=TOP, padx=100,pady=350)
 
     def kwerenda_1(self):
         popup_window = tk.Toplevel(self.root)
@@ -60,7 +60,7 @@ class Inquiries:
 
         popup_window.transient(self.root)
         popup_window.overrideredirect(True)
-
+        popup_window.attributes('-topmost', False)
         popup_window.grab_set()
 
         screen_width = self.root.winfo_screenwidth()
@@ -128,7 +128,6 @@ class Inquiries:
 
                 kw_1()
 
-
             except Exception as e:
                 messagebox.showerror("Błąd", f"Niepoprawne podano dane!\n")
                 print(e)
@@ -137,12 +136,19 @@ class Inquiries:
                 self.D2_entry.delete(0, tk.END)
 
         def delete():
-            self.D1_entry.delete(0, tk.END)
-            self.D2_entry.delete(0, tk.END)
+            info = messagebox.askyesnocancel("Sukcess",f"Czy napewno chcesz zakończyć akcje?")
+            if info is True:
+                self.D1_entry.delete(0, tk.END)
+                self.D2_entry.delete(0, tk.END)
+                popup_window.destroy()
+                self.tab4_submenu.configure(width=74)
+                self.tab4_submenu.pack(side=TOP, padx=100)
+            else:
+                self.empty_window()
 
 
         tk.Button(button_frame, text="Zatwierdz", command=get_values, width=15).grid(row=7, column=0, padx=5,pady=5, sticky='w')
-        tk.Button(button_frame, text="Reset", command=delete, width=15).grid(row=7, column=1, padx=5,pady=5, sticky='e')
+        tk.Button(button_frame, text="Zamknij", command=delete, width=15).grid(row=7, column=1, padx=5,pady=5, sticky='e')
     def kwerenda_2(self):
         def kw_1():
             self.tree = ttk.Treeview(self.tab4)
@@ -175,7 +181,7 @@ class Inquiries:
 
         popup_window.transient(self.root)
         popup_window.overrideredirect(True)
-
+        popup_window.attributes('-topmost', False)
         popup_window.grab_set()
 
         screen_width = self.root.winfo_screenwidth()
@@ -255,12 +261,20 @@ class Inquiries:
 
 
         def delete():
-            self.D1_entry.delete(0, tk.END)
-            self.D2_entry.delete(0, tk.END)
+            info = messagebox.askyesnocancel("Sukcess",f"Czy napewno chcesz zakończyć akcje?")
+            if info is True:
+                self.D1_entry.delete(0, tk.END)
+                self.D2_entry.delete(0, tk.END)
+                popup_window.destroy()
+                self.tab4_submenu.configure(width=74)
+                self.tab4_submenu.pack(side=TOP, padx=100)
+
+            else:
+                self.empty_window()
 
 
         tk.Button(button_frame, text="Zatwierdz", command=get_values, width=15).grid(row=7, column=0, padx=5,pady=5, sticky='w')
-        tk.Button(button_frame, text="Reset", command=delete, width=15).grid(row=7, column=1, padx=5,pady=5, sticky='e')
+        tk.Button(button_frame, text="Zamknij", command=delete, width=15).grid(row=7, column=1, padx=5,pady=5, sticky='e')
     def kwerenda_4(self):
         popup_window = tk.Toplevel(self.root)
         popup_window.title("PODAJ PIERWSZA LITERE NAZWISKA")
@@ -269,7 +283,7 @@ class Inquiries:
 
         popup_window.transient(self.root)
         popup_window.overrideredirect(True)
-
+        popup_window.attributes('-topmost', False)
         popup_window.grab_set()
 
         screen_width = self.root.winfo_screenwidth()
@@ -345,11 +359,18 @@ class Inquiries:
 
 
         def delete():
-            self.D1_entry.delete(0, tk.END)
+            info = messagebox.askyesnocancel("Sukcess",f"Czy napewno chcesz zakończyć akcje?")
+            if info is True:
+                self.D1_entry.delete(0, tk.END)
+                popup_window.destroy()
+                self.tab4_submenu.configure(width=74)
+                self.tab4_submenu.pack(side=TOP, padx=100)
+            else:
+                self.empty_window()
 
 
         tk.Button(button_frame, text="Zatwierdz", command=get_values, width=15).grid(row=7, column=0, padx=5,pady=5, sticky='w')
-        tk.Button(button_frame, text="Reset", command=delete, width=15).grid(row=7, column=1, padx=5,pady=5, sticky='e')
+        tk.Button(button_frame, text="Zamknij", command=delete, width=15).grid(row=7, column=1, padx=5,pady=5, sticky='e')
     def kwerenda_5(self):
         popup_window = tk.Toplevel(self.root)
         popup_window.title("PODAJ ROZMIAR POWIERZCHNI UŻYTKOWEJ")
@@ -358,7 +379,7 @@ class Inquiries:
 
         popup_window.transient(self.root)
         popup_window.overrideredirect(True)
-
+        popup_window.attributes('-topmost', False)
         popup_window.grab_set()
 
         screen_width = self.root.winfo_screenwidth()
@@ -433,14 +454,25 @@ class Inquiries:
                 self.D1_entry.delete(0, tk.END)
 
         def delete():
-            self.D1_entry.delete(0, tk.END)
+            info = messagebox.askyesnocancel("Sukcess",f"Czy napewno chcesz zakończyć akcje?")
+            if info is True:
+                self.D1_entry.delete(0, tk.END)
+                popup_window.destroy()
+                self.tab4_submenu.configure(width=74)
+                self.tab4_submenu.pack(side=TOP, padx=100)
+            else:
+                self.empty_window()
 
         tk.Button(button_frame, text="Zatwierdz", command=get_values, width=15).grid(row=7, column=0, padx=5, pady=5,
                                                                                      sticky='w')
-        tk.Button(button_frame, text="Reset", command=delete, width=15).grid(row=7, column=1, padx=5, pady=5,
+        tk.Button(button_frame, text="Zamknij", command=delete, width=15).grid(row=7, column=1, padx=5, pady=5,
                                                                              sticky='e')
 
     def zapytania_subtab(self,option):
+
+        self.tab4_submenu.configure(width=10)
+        self.tab4_submenu.pack(side=LEFT, padx=10, pady=350)
+
         if option == "Umowy zawarte w danym zakresie lat":
             if self.tree is not None:
                 self.tree.destroy()
@@ -471,10 +503,7 @@ class Inquiries:
             self.tab4_subnotebook.select(self.tab4_subtab5)
             self.kwerenda_5()
 
-
-
-
-
-
-
-
+    def empty_window(self):
+        pom = tk.Toplevel(self.root)
+        pom.resizable(False, False)
+        pom.destroy()

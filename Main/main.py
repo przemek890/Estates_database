@@ -21,6 +21,13 @@ if __name__ == "__main__":
     tuck4 = iq.Inquiries(window.root,connect.cursor,notebook,connect.conn)
     tuck5 = sb.Mongo_DB(window.root,notebook,connect_mn)
 
+    print("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ")
+    print("2. By odświeżyć widok tabeli klikni ponownie na wybraną podtabelę w notebooku")
+    print("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - \n")
+    print("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ")
+    print("3. Niezgodność typów danych i/lub naruszenia integralności referencyjnej spowoduje brak dodania rekordu do bazy")
+    print("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - \n")
+
     def on_tab_selected(event):
         current_tab = event.widget.tab(event.widget.select(), "text")
         if current_tab == "Informacje o tabelach":

@@ -1,7 +1,6 @@
-from tkinter import ttk, LEFT
+from tkinter import ttk, LEFT, BOTTOM, TOP
 import tkinter.messagebox as messagebox
 import tkinter as tk
-import Main.Global_variables as globalvb
 
 """Moduł dodawania rekordow"""
 class Dodaj_rekord:
@@ -46,8 +45,8 @@ class Dodaj_rekord:
                 self.tab2_submenu = ttk.OptionMenu(self.tab2, self.tab2_submenu_var, "Tabele", "Klienci",
                                            "Nieruchomosci", "Oferty", "Posrednicy", "Transakcje", "Typy_nieruchomosci",
                                            "Umowy", command=self.Add_subtab)
-                self.tab2_submenu.configure(width=14)
-                self.tab2_submenu.pack(side=LEFT, padx=10, pady=350)
+                self.tab2_submenu.configure(width=74)
+                self.tab2_submenu.pack(side=TOP, padx=100)
 
     def Add_Klienci(self):
         popup_window = tk.Toplevel(self.root)
@@ -57,7 +56,7 @@ class Dodaj_rekord:
 
         popup_window.transient(self.root)
         popup_window.overrideredirect(True)
-
+        popup_window.attributes('-topmost', False)
         popup_window.grab_set()
 
         screen_width = self.root.winfo_screenwidth()
@@ -69,7 +68,7 @@ class Dodaj_rekord:
         popup_window.resizable(False, False)
 
         frame = ttk.Frame(popup_window)
-        frame.pack(expand=True, fill="both", padx=5, pady=5)
+        frame.pack(expand=False, fill="both", padx=5, pady=5)
 
         tk.Label(frame, text="DODAJ KLIENTA").grid(row=0, column=0, columnspan=2, padx=5, pady=5, sticky="ew")
 
@@ -123,22 +122,28 @@ class Dodaj_rekord:
                 popup_window.destroy()
 
         def delete():
-            self.imie_entry.delete(0, tk.END)
-            self.nazwisko_entry.delete(0, tk.END)
-            self.Adres_zameldowania_entry.delete(0, tk.END)
-            self.numer_telefonu_entry.delete(0, tk.END)
-            self.adres_email_entry.delete(0, tk.END)
+            info = messagebox.askyesnocancel("Sukcess",f"Czy napewno chcesz zakończyć akcje?")
+            if info is True:
+                self.imie_entry.delete(0, tk.END)
+                self.nazwisko_entry.delete(0, tk.END)
+                self.Adres_zameldowania_entry.delete(0, tk.END)
+                self.numer_telefonu_entry.delete(0, tk.END)
+                self.adres_email_entry.delete(0, tk.END)
+                popup_window.destroy()
+            else:
+                self.empty_window()
 
         tk.Button(button_frame, text="Dodaj", command=add_client, width=15).grid(row=7, column=0, padx=5,pady=5, sticky='w')
-        tk.Button(button_frame, text="Reset", command=delete, width=15).grid(row=7, column=1, padx=5,pady=5, sticky='e')
+        tk.Button(button_frame, text="Zamknij", command=delete, width=15).grid(row=7, column=1, padx=5,pady=5, sticky='e')
     def Add_Nieruchomosci(self):
         popup_window = tk.Toplevel(self.root)
         popup_window.title("Dodaj Nieruchomosci")
         quarter_screen_width = 400
         quarter_screen_height = 325
-        popup_window.transient(self.root)
 
+        popup_window.transient(self.root)
         popup_window.overrideredirect(True)
+        popup_window.attributes('-topmost', False)
         popup_window.grab_set()
 
         screen_width = popup_window.winfo_screenwidth()
@@ -211,15 +216,20 @@ class Dodaj_rekord:
                 popup_window.destroy()
 
         def delete():
-            self.Kraj_entry.delete(0, tk.END)
-            self.Miejscowosc_entry.delete(0, tk.END)
-            self.Ulica_entry.delete(0, tk.END)
-            self.Powierzchnia_entry.delete(0, tk.END)
-            self.Liczba_pokoi_entry.delete(0, tk.END)
-            self.ID_Typu_nieruchomosci_entry.delete(0, tk.END)
+            info = messagebox.askyesnocancel("Sukcess",f"Czy napewno chcesz zakończyć akcje?")
+            if info is True:
+                self.Kraj_entry.delete(0, tk.END)
+                self.Miejscowosc_entry.delete(0, tk.END)
+                self.Ulica_entry.delete(0, tk.END)
+                self.Powierzchnia_entry.delete(0, tk.END)
+                self.Liczba_pokoi_entry.delete(0, tk.END)
+                self.ID_Typu_nieruchomosci_entry.delete(0, tk.END)
+                popup_window.destroy()
+            else:
+                self.empty_window()
 
         tk.Button(button_frame, text="Dodaj", command=add_nieruchomosc,width=15).grid(row=8, column=0, padx=5, pady=10,sticky='w')
-        tk.Button(button_frame, text="Reset", command=delete,width=15).grid(row=8, column=1, padx=5, pady=10,sticky='e')
+        tk.Button(button_frame, text="Zamknij", command=delete,width=15).grid(row=8, column=1, padx=5, pady=10,sticky='e')
     def Add_Oferty(self):
         popup_window = tk.Toplevel(self.root)
         popup_window.title("Dodaj Oferty")
@@ -228,6 +238,7 @@ class Dodaj_rekord:
         popup_window.transient(self.root)
 
         popup_window.overrideredirect(True)
+        popup_window.attributes('-topmost', False)
         popup_window.grab_set()
 
         screen_width = popup_window.winfo_screenwidth()
@@ -282,12 +293,17 @@ class Dodaj_rekord:
                 popup_window.destroy()
 
         def delete():
-            self.Id_Nieruchomosci_entry.delete(0, tk.END)
-            self.ID_Posrednika_entry.delete(0, tk.END)
-            self.Data_dodania_entry.delete(0, tk.END)
+            info = messagebox.askyesnocancel("Sukcess",f"Czy napewno chcesz zakończyć akcje?")
+            if info is True:
+                self.Id_Nieruchomosci_entry.delete(0, tk.END)
+                self.ID_Posrednika_entry.delete(0, tk.END)
+                self.Data_dodania_entry.delete(0, tk.END)
+                popup_window.destroy()
+            else:
+                self.empty_window()
 
         tk.Button(button_frame, text="Dodaj", command=add_oferty,width=15).grid(row=5, column=0, padx=5, pady=15,sticky='w')
-        tk.Button(button_frame, text="Reset", command=delete,width=15).grid(row=5, column=1, padx=5, pady=15,sticky='e')
+        tk.Button(button_frame, text="Zamknij", command=delete,width=15).grid(row=5, column=1, padx=5, pady=15,sticky='e')
     def Add_Posrednicy(self):
         popup_window = tk.Toplevel(self.root)
         popup_window.title("Dodaj Posrednika")
@@ -296,6 +312,7 @@ class Dodaj_rekord:
         popup_window.transient(self.root)
 
         popup_window.overrideredirect(True)
+        popup_window.attributes('-topmost', False)
         popup_window.grab_set()
 
         screen_width = popup_window.winfo_screenwidth()
@@ -356,13 +373,18 @@ class Dodaj_rekord:
                 popup_window.destroy()
 
         def delete():
-            self.imie_entry.delete(0, tk.END)
-            self.nazwisko_entry.delete(0, tk.END)
-            self.numer_telefonu_entry.delete(0, tk.END)
-            self.adres_email_entry.delete(0, tk.END)
+            info = messagebox.askyesnocancel("Sukcess",f"Czy napewno chcesz zakończyć akcje?")
+            if info is True:
+                self.imie_entry.delete(0, tk.END)
+                self.nazwisko_entry.delete(0, tk.END)
+                self.numer_telefonu_entry.delete(0, tk.END)
+                self.adres_email_entry.delete(0, tk.END)
+                popup_window.destroy()
+            else:
+                self.empty_window()
 
         tk.Button(button_frame, text="Dodaj", command=add_posrednik,width=15).grid(row=6, column=0, padx=5, pady=10,sticky='w')
-        tk.Button(button_frame, text="Reset", command=delete,width=15).grid(row=6, column=1, padx=5, pady=10,sticky='e')
+        tk.Button(button_frame, text="Zamknij", command=delete,width=15).grid(row=6, column=1, padx=5, pady=10,sticky='e')
     def Add_Transakcje(self):
         popup_window = tk.Toplevel(self.root)
         popup_window.title("Dodaj Transakcje")
@@ -371,6 +393,7 @@ class Dodaj_rekord:
         popup_window.transient(self.root)
 
         popup_window.overrideredirect(True)
+        popup_window.attributes('-topmost', False)
         popup_window.grab_set()
 
         screen_width = popup_window.winfo_screenwidth()
@@ -425,13 +448,20 @@ class Dodaj_rekord:
                 popup_window.destroy()
 
         def delete():
-            self.ID_Umowy_entry.delete(0, tk.END)
-            self.ID_Posrednika_entry.delete(0, tk.END)
-            self.Kwota_transakcji_entry.delete(0, tk.END)
+            info = messagebox.askyesnocancel("Sukcess",f"Czy napewno chcesz zakończyć akcje?")
+            if info is True:
+                self.ID_Umowy_entry.delete(0, tk.END)
+                self.ID_Posrednika_entry.delete(0, tk.END)
+                self.Kwota_transakcji_entry.delete(0, tk.END)
+                popup_window.destroy()
+            else:
+                self.empty_window()
+
+
 
 
         tk.Button(button_frame, text="Dodaj", command=add_transakcja,width=15).grid(row=4, column=0, padx=5, pady=10,sticky='w')
-        tk.Button(button_frame, text="Reset", command=delete,width=15).grid(row=4, column=1, padx=5, pady=10,sticky='e')
+        tk.Button(button_frame, text="Zamknij", command=delete,width=15).grid(row=4, column=1, padx=5, pady=10,sticky='e')
     def Add_Typy_nieruchomosci(self):
         popup_window = tk.Toplevel(self.root)
         popup_window.title("Dodaj Typ nieruchomosci")
@@ -440,6 +470,7 @@ class Dodaj_rekord:
         popup_window.transient(self.root)
 
         popup_window.overrideredirect(True)
+        popup_window.attributes('-topmost', False)
         popup_window.grab_set()
 
         screen_width = popup_window.winfo_screenwidth()
@@ -487,12 +518,17 @@ class Dodaj_rekord:
                 popup_window.destroy()
 
         def delete():
-            self.nazwa_entry.delete(0, tk.END)
-            self.opis_entry.delete(0, tk.END)
+            info = messagebox.askyesnocancel("Sukcess",f"Czy napewno chcesz zakończyć akcje?")
+            if info is True:
+                self.nazwa_entry.delete(0, tk.END)
+                self.opis_entry.delete(0, tk.END)
+                popup_window.destroy()
+            else:
+                self.empty_window()
 
 
         tk.Button(button_frame, text="Dodaj", command=add_typ_nieruchomosci,width=15).grid(row=4, column=0, padx=5, pady=10,sticky='w')
-        tk.Button(button_frame, text="Reset", command=delete,width=15).grid(row=4, column=1, padx=5, pady=10,sticky='e')
+        tk.Button(button_frame, text="Zamknij", command=delete,width=15).grid(row=4, column=1, padx=5, pady=10,sticky='e')
     def Add_Umowy(self):
         popup_window = tk.Toplevel(self.root)
         popup_window.title("Dodaj Umowe")
@@ -501,6 +537,7 @@ class Dodaj_rekord:
         popup_window.transient(self.root)
 
         popup_window.overrideredirect(True)
+        popup_window.attributes('-topmost', False)
         popup_window.grab_set()
 
         screen_width = popup_window.winfo_screenwidth()
@@ -561,15 +598,24 @@ class Dodaj_rekord:
                 popup_window.destroy()
 
         def delete():
-            self.Data_zawarcia_entry.delete(0, tk.END)
-            self.Data_podpisania_entry.delete(0, tk.END)
-            self.ID_nieruchomosci_entry.delete(0, tk.END)
-            self.ID_klienta_entry.delete(0, tk.END)
+            info = messagebox.askyesnocancel("Sukcess",f"Czy napewno chcesz zakończyć akcje?")
+            if info is True:
+                self.Data_zawarcia_entry.delete(0, tk.END)
+                self.Data_podpisania_entry.delete(0, tk.END)
+                self.ID_nieruchomosci_entry.delete(0, tk.END)
+                self.ID_klienta_entry.delete(0, tk.END)
+                popup_window.destroy()
+            else:
+                self.empty_window()
 
         tk.Button(button_frame, text="Dodaj", command=add_umowa,width=15).grid(row=6, column=0, padx=5, pady=5,sticky='w')
-        tk.Button(button_frame, text="Reset", command=delete,width=15).grid(row=6, column=1, padx=5, pady=5,sticky='e')
+        tk.Button(button_frame, text="Zamknij", command=delete,width=15).grid(row=6, column=1, padx=5, pady=5,sticky='e')
 
     def Add_subtab(self, option):
+
+        self.tab2_submenu.configure(width=74)
+        self.tab2_submenu.pack(side=TOP, padx=100)
+
         if option == "Klienci":
             self.Add_Klienci()
         if option == "Nieruchomosci":
@@ -584,6 +630,7 @@ class Dodaj_rekord:
             self.Add_Typy_nieruchomosci()
         if option == "Umowy":
             self.Add_Umowy()
+
 
     def add_client_to_database(self, imie, nazwisko, Adres_zameldowania, numer_telefonu, adres_email):
         sql = "INSERT INTO Klienci (Imie,Nazwisko,Adres_Zameldowania,Numer_telefonu,Adres_email) VALUES (%s, %s, %s,%s,%s)"
@@ -659,3 +706,7 @@ class Dodaj_rekord:
         # zatwierdzenie zmian w bazie danych
         self.conn.commit()
 
+    def empty_window(self):
+        pom = tk.Toplevel(self.root)
+        pom.resizable(False, False)
+        pom.destroy()

@@ -1,4 +1,4 @@
-from tkinter import ttk, LEFT
+from tkinter import ttk, LEFT, TOP
 import tkinter.messagebox as messagebox
 import tkinter as tk
 
@@ -45,18 +45,18 @@ class Usun_rekord:
                 self.tab3_submenu = ttk.OptionMenu(self.tab3, self.tab3_submenu_var, "Tabele", "Klienci",
                                            "Nieruchomosci", "Oferty", "Posrednicy", "Transakcje", "Typy_nieruchomosci",
                                            "Umowy", command=self.Remove_subtab)
-                self.tab3_submenu.configure(width=14)
-                self.tab3_submenu.pack(side=LEFT, padx=10, pady=350)
-
+                self.tab3_submenu.configure(width=74)
+                self.tab3_submenu.pack(side=TOP, padx=100)
     def Remove_Tab(self,tabela,rem_tab):
         popup_window = tk.Toplevel(self.root)
         popup_window.title("Usun {}".format(tabela))
         quarter_screen_width = 400
         quarter_screen_height = 125
 
+
         popup_window.transient(self.root)
         popup_window.overrideredirect(True)
-
+        popup_window.attributes('-topmost', False)
         popup_window.grab_set()
 
         screen_width = self.root.winfo_screenwidth()
@@ -96,12 +96,22 @@ class Usun_rekord:
                 popup_window.destroy()
 
         def delete():
-            self.ID_entry.delete(0, tk.END)
+            info = messagebox.askyesnocancel("Sukcess", f"Czy napewno chcesz zakończyć akcje?")
+            if info is True:
+                self.ID_entry.delete(0, tk.END)
+                popup_window.destroy()
+            else:
+                self.empty_window()
+
 
         tk.Button(button_frame, text="Usun", command=rem, width=15).grid(row=7, column=0, padx=5,pady=5, sticky='w')
-        tk.Button(button_frame, text="Reset", command=delete, width=15).grid(row=7, column=1, padx=5,pady=5, sticky='e')
+        tk.Button(button_frame, text="Zamknij", command=delete, width=15).grid(row=7, column=1, padx=5,pady=5, sticky='e')
 
     def Remove_subtab(self, option):
+
+        self.tab3_submenu.configure(width=74)
+        self.tab3_submenu.pack(side=TOP, padx=100)
+
         if option == "Klienci":
             self.Remove_Tab("KLIENTA",self.rem_client_to_database)
         if option == "Nieruchomosci":
@@ -160,3 +170,7 @@ class Usun_rekord:
         self.conn.commit()
 
 
+    def empty_window(self):
+        pom = tk.Toplevel(self.root)
+        pom.resizable(False, False)
+        pom.destroy()
