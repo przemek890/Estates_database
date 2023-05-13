@@ -63,12 +63,18 @@ class Inquiries:
         popup_window.attributes('-topmost', False)
         popup_window.grab_set()
 
-        screen_width = self.root.winfo_screenwidth()
-        screen_height = self.root.winfo_screenheight()
-        x = int((screen_width - quarter_screen_width) / 2)
-        y = int((screen_height - quarter_screen_height) / 2)
+        popup_width = quarter_screen_width
+        popup_height = quarter_screen_height
 
-        popup_window.geometry(f"{quarter_screen_width}x{quarter_screen_height}+{x}+{y}")
+        root_x = self.root.winfo_rootx()
+        root_y = self.root.winfo_rooty()
+        root_width = self.root.winfo_width()
+        root_height = self.root.winfo_height()
+
+        x = root_x + int((root_width - popup_width) / 2)
+        y = root_y + int((root_height - popup_height) / 2)
+
+        popup_window.geometry(f"{popup_width}x{popup_height}+{x}+{y}")
         popup_window.resizable(False, False)
 
         frame = ttk.Frame(popup_window)
@@ -103,7 +109,8 @@ class Inquiries:
             self.tree.heading("3", text="Opis", anchor=tk.CENTER)
             self.tree.heading("4", text="", anchor=tk.CENTER)
 
-            with open('DataBase_sql/inquiries/zapytanie_1.sql', 'r') as file:
+
+            with open('/Users/przemek899/desktop/sprzedaz_nieruchomosci_pj/DataBase_sql/inquiries/zapytanie_1.sql', 'r') as file:
                 query = file.read()
                 query.format(self.D1,self.D2)
 
@@ -163,7 +170,7 @@ class Inquiries:
             self.tree.heading("2", text="Łączna cena nieruchomości", anchor=tk.CENTER)
             self.tree.heading("3", text="", anchor=tk.CENTER)
 
-            with open('DataBase_sql/inquiries/zapytanie_2.sql', 'r') as file:
+            with open('/Users/przemek899/desktop/sprzedaz_nieruchomosci_pj/DataBase_sql/inquiries/zapytanie_2.sql', 'r') as file:
                 query = file.read()
                 query.format(self.D1,self.D2)
 
@@ -184,12 +191,18 @@ class Inquiries:
         popup_window.attributes('-topmost', False)
         popup_window.grab_set()
 
-        screen_width = self.root.winfo_screenwidth()
-        screen_height = self.root.winfo_screenheight()
-        x = int((screen_width - quarter_screen_width) / 2)
-        y = int((screen_height - quarter_screen_height) / 2)
+        popup_width = quarter_screen_width
+        popup_height = quarter_screen_height
 
-        popup_window.geometry(f"{quarter_screen_width}x{quarter_screen_height}+{x}+{y}")
+        root_x = self.root.winfo_rootx()
+        root_y = self.root.winfo_rooty()
+        root_width = self.root.winfo_width()
+        root_height = self.root.winfo_height()
+
+        x = root_x + int((root_width - popup_width) / 2)
+        y = root_y + int((root_height - popup_height) / 2)
+
+        popup_window.geometry(f"{popup_width}x{popup_height}+{x}+{y}")
         popup_window.resizable(False, False)
 
         frame = ttk.Frame(popup_window)
@@ -226,7 +239,7 @@ class Inquiries:
             self.tree.heading("4", text="Kwota transakcji", anchor=tk.CENTER)
             self.tree.heading("5", text="", anchor=tk.CENTER)
 
-            with open('DataBase_sql/inquiries/zapytanie_3.sql', 'r') as file:
+            with open('/Users/przemek899/desktop/sprzedaz_nieruchomosci_pj/DataBase_sql/inquiries/zapytanie_3.sql', 'r') as file:
                 query = file.read()
                 query.format(self.D1,self.D2)
 
@@ -286,12 +299,18 @@ class Inquiries:
         popup_window.attributes('-topmost', False)
         popup_window.grab_set()
 
-        screen_width = self.root.winfo_screenwidth()
-        screen_height = self.root.winfo_screenheight()
-        x = int((screen_width - quarter_screen_width) / 2)
-        y = int((screen_height - quarter_screen_height) / 2)
+        popup_width = quarter_screen_width
+        popup_height = quarter_screen_height
 
-        popup_window.geometry(f"{quarter_screen_width}x{quarter_screen_height}+{x}+{y}")
+        root_x = self.root.winfo_rootx()
+        root_y = self.root.winfo_rooty()
+        root_width = self.root.winfo_width()
+        root_height = self.root.winfo_height()
+
+        x = root_x + int((root_width - popup_width) / 2)
+        y = root_y + int((root_height - popup_height) / 2)
+
+        popup_window.geometry(f"{popup_width}x{popup_height}+{x}+{y}")
         popup_window.resizable(False, False)
 
         frame = ttk.Frame(popup_window)
@@ -326,7 +345,7 @@ class Inquiries:
             self.tree.heading("5", text="Numer telefonu", anchor=tk.CENTER)
             self.tree.heading("6", text="Adres email", anchor=tk.CENTER)
 
-            with open('DataBase_sql/inquiries/zapytanie_4.sql', 'r') as file:
+            with open('/Users/przemek899/desktop/sprzedaz_nieruchomosci_pj/DataBase_sql/inquiries/zapytanie_4.sql', 'r') as file:
                 query = file.read()
                 query.format(self.D1)
 
@@ -382,12 +401,18 @@ class Inquiries:
         popup_window.attributes('-topmost', False)
         popup_window.grab_set()
 
-        screen_width = self.root.winfo_screenwidth()
-        screen_height = self.root.winfo_screenheight()
-        x = int((screen_width - quarter_screen_width) / 2)
-        y = int((screen_height - quarter_screen_height) / 2)
+        popup_width = quarter_screen_width
+        popup_height = quarter_screen_height
 
-        popup_window.geometry(f"{quarter_screen_width}x{quarter_screen_height}+{x}+{y}")
+        root_x = self.root.winfo_rootx()
+        root_y = self.root.winfo_rooty()
+        root_width = self.root.winfo_width()
+        root_height = self.root.winfo_height()
+
+        x = root_x + int((root_width - popup_width) / 2)
+        y = root_y + int((root_height - popup_height) / 2)
+
+        popup_window.geometry(f"{popup_width}x{popup_height}+{x}+{y}")
         popup_window.resizable(False, False)
 
         frame = ttk.Frame(popup_window)
@@ -423,7 +448,7 @@ class Inquiries:
             self.tree.heading("6", text="Liczba pokoi", anchor=tk.CENTER)
             self.tree.heading("7", text="ID Typu nieruchomosci", anchor=tk.CENTER)
 
-            with open('DataBase_sql/inquiries/zapytanie_5.sql', 'r') as file:
+            with open('/Users/przemek899/desktop/sprzedaz_nieruchomosci_pj/DataBase_sql/inquiries/zapytanie_5.sql', 'r') as file:
                 query = file.read()
                 query.format(self.D1)
 

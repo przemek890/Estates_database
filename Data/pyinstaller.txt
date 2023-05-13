@@ -1,0 +1,7 @@
+pyinstaller --onefile --hidden-import=DataBase_file.Tab_info 
+--hidden-import=DataBase_file.Add_rec 
+--hidden-import=DataBase_file.Rem_rec 
+--hidden-import=DataBase_file.Database_connect 
+--hidden-import=DataBase_file.Inquiries --hidden-import=Window.window 
+--hidden-import=DataBase_file.MongoDB main.py
+

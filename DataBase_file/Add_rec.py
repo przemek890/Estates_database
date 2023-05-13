@@ -59,16 +59,21 @@ class Dodaj_rekord:
         popup_window.attributes('-topmost', False)
         popup_window.grab_set()
 
-        screen_width = self.root.winfo_screenwidth()
-        screen_height = self.root.winfo_screenheight()
-        x = int((screen_width - quarter_screen_width) / 2)
-        y = int((screen_height - quarter_screen_height) / 2)
+        popup_width = quarter_screen_width
+        popup_height = quarter_screen_height
 
-        popup_window.geometry(f"{quarter_screen_width}x{quarter_screen_height}+{x}+{y}")
+        root_x = self.root.winfo_rootx()
+        root_y = self.root.winfo_rooty()
+        root_width = self.root.winfo_width()
+        root_height = self.root.winfo_height()
+
+        x = root_x + int((root_width - popup_width) / 2)
+        y = root_y + int((root_height - popup_height) / 2)
+
+        popup_window.geometry(f"{popup_width}x{popup_height}+{x}+{y}")
         popup_window.resizable(False, False)
-
         frame = ttk.Frame(popup_window)
-        frame.pack(expand=False, fill="both", padx=5, pady=5)
+        frame.pack(expand=True, fill="both", padx=5, pady=5)
 
         tk.Label(frame, text="DODAJ KLIENTA").grid(row=0, column=0, columnspan=2, padx=5, pady=5, sticky="ew")
 
@@ -146,12 +151,18 @@ class Dodaj_rekord:
         popup_window.attributes('-topmost', False)
         popup_window.grab_set()
 
-        screen_width = popup_window.winfo_screenwidth()
-        screen_height = popup_window.winfo_screenheight()
-        x = int((screen_width - quarter_screen_width) / 2)
-        y = int((screen_height - quarter_screen_height)/ 2)
+        popup_width = quarter_screen_width
+        popup_height = quarter_screen_height
 
-        popup_window.geometry(f"{quarter_screen_width}x{quarter_screen_height}+{x}+{y}")
+        root_x = self.root.winfo_rootx()
+        root_y = self.root.winfo_rooty()
+        root_width = self.root.winfo_width()
+        root_height = self.root.winfo_height()
+
+        x = root_x + int((root_width - popup_width) / 2)
+        y = root_y + int((root_height - popup_height) / 2)
+
+        popup_window.geometry(f"{popup_width}x{popup_height}+{x}+{y}")
         popup_window.resizable(False, False)
 
         frame = ttk.Frame(popup_window)
@@ -241,12 +252,18 @@ class Dodaj_rekord:
         popup_window.attributes('-topmost', False)
         popup_window.grab_set()
 
-        screen_width = popup_window.winfo_screenwidth()
-        screen_height = popup_window.winfo_screenheight()
-        x = int((screen_width - quarter_screen_width) / 2)
-        y = int((screen_height - quarter_screen_height)/ 2)
+        popup_width = quarter_screen_width
+        popup_height = quarter_screen_height
 
-        popup_window.geometry(f"{quarter_screen_width}x{quarter_screen_height}+{x}+{y}")
+        root_x = self.root.winfo_rootx()
+        root_y = self.root.winfo_rooty()
+        root_width = self.root.winfo_width()
+        root_height = self.root.winfo_height()
+
+        x = root_x + int((root_width - popup_width) / 2)
+        y = root_y + int((root_height - popup_height) / 2)
+
+        popup_window.geometry(f"{popup_width}x{popup_height}+{x}+{y}")
         popup_window.resizable(False, False)
 
         frame = ttk.Frame(popup_window)
@@ -315,12 +332,18 @@ class Dodaj_rekord:
         popup_window.attributes('-topmost', False)
         popup_window.grab_set()
 
-        screen_width = popup_window.winfo_screenwidth()
-        screen_height = popup_window.winfo_screenheight()
-        x = int((screen_width - quarter_screen_width) / 2)
-        y = int((screen_height - quarter_screen_height) / 2)
+        popup_width = quarter_screen_width
+        popup_height = quarter_screen_height
 
-        popup_window.geometry(f"{quarter_screen_width}x{quarter_screen_height}+{x}+{y}")
+        root_x = self.root.winfo_rootx()
+        root_y = self.root.winfo_rooty()
+        root_width = self.root.winfo_width()
+        root_height = self.root.winfo_height()
+
+        x = root_x + int((root_width - popup_width) / 2)
+        y = root_y + int((root_height - popup_height) / 2)
+
+        popup_window.geometry(f"{popup_width}x{popup_height}+{x}+{y}")
         popup_window.resizable(False, False)
 
         frame = ttk.Frame(popup_window)
@@ -396,12 +419,18 @@ class Dodaj_rekord:
         popup_window.attributes('-topmost', False)
         popup_window.grab_set()
 
-        screen_width = popup_window.winfo_screenwidth()
-        screen_height = popup_window.winfo_screenheight()
-        x = int((screen_width - quarter_screen_width) / 2)
-        y = int((screen_height - quarter_screen_height) / 2)
+        popup_width = quarter_screen_width
+        popup_height = quarter_screen_height
 
-        popup_window.geometry(f"{quarter_screen_width}x{quarter_screen_height}+{x}+{y}")
+        root_x = self.root.winfo_rootx()
+        root_y = self.root.winfo_rooty()
+        root_width = self.root.winfo_width()
+        root_height = self.root.winfo_height()
+
+        x = root_x + int((root_width - popup_width) / 2)
+        y = root_y + int((root_height - popup_height) / 2)
+
+        popup_window.geometry(f"{popup_width}x{popup_height}+{x}+{y}")
         popup_window.resizable(False, False)
 
         frame = ttk.Frame(popup_window)
@@ -473,12 +502,18 @@ class Dodaj_rekord:
         popup_window.attributes('-topmost', False)
         popup_window.grab_set()
 
-        screen_width = popup_window.winfo_screenwidth()
-        screen_height = popup_window.winfo_screenheight()
-        x = int((screen_width - quarter_screen_width) / 2)
-        y = int((screen_height - quarter_screen_height) / 2)
+        popup_width = quarter_screen_width
+        popup_height = quarter_screen_height
 
-        popup_window.geometry(f"{quarter_screen_width}x{quarter_screen_height}+{x}+{y}")
+        root_x = self.root.winfo_rootx()
+        root_y = self.root.winfo_rooty()
+        root_width = self.root.winfo_width()
+        root_height = self.root.winfo_height()
+
+        x = root_x + int((root_width - popup_width) / 2)
+        y = root_y + int((root_height - popup_height) / 2)
+
+        popup_window.geometry(f"{popup_width}x{popup_height}+{x}+{y}")
         popup_window.resizable(False, False)
 
         frame = ttk.Frame(popup_window)
@@ -540,12 +575,18 @@ class Dodaj_rekord:
         popup_window.attributes('-topmost', False)
         popup_window.grab_set()
 
-        screen_width = popup_window.winfo_screenwidth()
-        screen_height = popup_window.winfo_screenheight()
-        x = int((screen_width - quarter_screen_width) / 2)
-        y = int((screen_height - quarter_screen_height)/ 2)
+        popup_width = quarter_screen_width
+        popup_height = quarter_screen_height
 
-        popup_window.geometry(f"{quarter_screen_width}x{quarter_screen_height}+{x}+{y}")
+        root_x = self.root.winfo_rootx()
+        root_y = self.root.winfo_rooty()
+        root_width = self.root.winfo_width()
+        root_height = self.root.winfo_height()
+
+        x = root_x + int((root_width - popup_width) / 2)
+        y = root_y + int((root_height - popup_height) / 2)
+
+        popup_window.geometry(f"{popup_width}x{popup_height}+{x}+{y}")
         popup_window.resizable(False, False)
 
         frame = ttk.Frame(popup_window)
