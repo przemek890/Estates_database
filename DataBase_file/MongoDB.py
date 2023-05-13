@@ -295,11 +295,15 @@ class Mongo_DB:
                 self.rec20_entry.delete(0, tk.END)
 
                 popup_window.destroy()
+                self.tab5_submenu.configure(width=74)
+                self.tab5_submenu.pack(side=TOP, padx=100)
 
             except Exception as e:
                 messagebox.showerror("Błąd", f"Niepoprawne dodanie rekordu do bazy danych!\n")
                 print(e)
                 popup_window.destroy()
+                self.tab5_submenu.configure(width=74)
+                self.tab5_submenu.pack(side=TOP, padx=100)
 
         def delete():
             info = messagebox.askyesnocancel("Sukcess", f"Czy napewno chcesz zakończyć akcje?")
@@ -385,11 +389,15 @@ class Mongo_DB:
 
                 self.ID_entry.delete(0, tk.END)
                 popup_window.destroy()
+                self.tab5_submenu.configure(width=74)
+                self.tab5_submenu.pack(side=TOP, padx=100)
 
             except Exception as e:
                 messagebox.showerror("Błąd", f"Niepoprawne usuniecie rekordu do bazy danych!\n")
                 print(e)
                 popup_window.destroy()
+                self.tab5_submenu.configure(width=74)
+                self.tab5_submenu.pack(side=TOP, padx=100)
 
         def delete():
             info = messagebox.askyesnocancel("Sukcess", f"Czy napewno chcesz zakończyć akcje?")
@@ -663,6 +671,8 @@ class Mongo_DB:
                 self.D1_entry.delete(0, tk.END)
                 self.D2_entry.delete(0, tk.END)
                 popup_window.destroy()
+                self.tab5_submenu.configure(width=74)
+                self.tab5_submenu.pack(side=TOP, padx=100)
 
 
 
@@ -672,6 +682,8 @@ class Mongo_DB:
                 popup_window.destroy()
                 self.D1_entry.delete(0, tk.END)
                 self.D2_entry.delete(0, tk.END)
+                self.tab5_submenu.configure(width=74)
+                self.tab5_submenu.pack(side=TOP, padx=100)
 
         def delete():
             info = messagebox.askyesnocancel("Sukcess",f"Czy napewno chcesz zakończyć akcje?")
